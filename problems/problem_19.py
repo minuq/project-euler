@@ -13,7 +13,29 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 
 
 def dayofyear(day, month, year):
+    for i in range(1, month, 1):
+        print daysinmonth(i)
     return 0
+
+
+def daysinmonth(month, leap):
+    feb = 28
+    if leap:
+        feb = 29
+    return {
+        1: 31,
+        2: feb,
+        3: 31,
+        4: 30,
+        5: 31,
+        6: 30,
+        7: 31,
+        8: 31,
+        9: 30,
+        10: 31,
+        11: 30,
+        12: 31
+    }.get(month)
 
 
 def weekday(day):
@@ -37,7 +59,11 @@ def daysinyear(year):
 
 
 def main():
-    for i in range(1900, 1920, 1):
+
+"""     for i in range(1900, 1920, 1):
         print(i, daysinyear(i))
-    result = daysinyear(1999)
-    print("Problem 19: {0}".format(result))
+    for j in range(1, 12, 1):
+        print(j, daysinmonth(j, False), daysinmonth(j, True)) """
+
+result = daysinyear(1999)
+print("Problem 19: {0}".format(result))
