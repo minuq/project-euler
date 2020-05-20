@@ -1,5 +1,5 @@
 import time
-import problems.problem_19 as problem
+import problems.problem_18 as problem
 
 
 def print_time(runtime):
