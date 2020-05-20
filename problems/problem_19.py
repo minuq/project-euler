@@ -12,13 +12,25 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 """
 
 
+def dayssincebeginning(day, month, year):
+    res = 0
+    leapyear = leap(year)
+    # only counts complete years
+    for i in range(1900, year, 1):
+        res += daysinyear(i)
+    for i in range(1, month, 1):
+        res += daysinmonth(i, leapyear)
+    res += day-1
+    return res  # returns the amount of days since 1.1.1900
+
+
 def dayofyear(day, month, year):
     print(day, month, year)
     res = 0
     for i in range(1, month, 1):
         res += daysinmonth(i, year)
     res += day
-    return res
+    return res  # returns how many days have passed since the beginning of a year
 
 
 def daysinmonth(month, leap):
@@ -38,11 +50,23 @@ def daysinmonth(month, leap):
         10: 31,
         11: 30,
         12: 31
-    }.get(month)
+    }.get(month)  # returns how many days are in a given month depending on leapyear status
 
 
-def weekday(day):
-    return 0
+def weekdayStr(days):
+    return {
+        1: "Mon",
+        2: "Tue",
+        3: "Wed",
+        4: "Thu",
+        5: "Fri",
+        6: "Sat",
+        7: "Sun"
+    }.get(days % 7+1)
+
+
+def weekday(days):
+    return days % 7 + 1
 
 
 def leap(year):
@@ -66,6 +90,17 @@ def main():
     #    print(i, daysinyear(i))
     # for j in range(1, 12, 1):
     #    print(j, daysinmonth(j, False), daysinmonth(j, True))
-    print(dayofyear(31, 12, 1990))
-    result = daysinyear(1999)
+    # print(dayssincebeginning(1, 1, 1900), 0)  # 0
+    # print(dayssincebeginning(2, 1, 1900), 1)  # 1
+    # print(dayssincebeginning(1, 2, 1900), 31)  # 31
+    # print(dayssincebeginning(1, 1, 2000), 365)  # 365
+    # day = 20
+    # month = 5
+    # year = 2020
+    # result = weekday(dayssincebeginning(day, month, year))
+    result = 0
+    for i in range(1901, 2001, 1):
+        for j in range(1, 13, 1):
+            if (weekday(dayssincebeginning(1, j, i)) == 7):  # 1. day of month j in year i
+                result += 1
     print("Problem 19: {0}".format(result))
