@@ -47,19 +47,10 @@ pyramid = [[75],
            [63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
            [4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]]
 
-
-def max(arr):
-    res = 0
-    index = 0
-    for i in range(0, len(arr)):
-        if arr[i] > res:
-            index = i
-            res = arr[i]
-    return res
-
-
 def main():
-    for i in range(0, len(pyramid), 1):
-        print(max(pyramid[i]))
-    res = 0
-    print("Problem 18: {0}".format(res))
+    i = len(pyramid)-2
+    while (i >= 0):
+        for j in range(0,len(pyramid[i])):
+            pyramid[i][j]+=max(pyramid[i+1][j],pyramid[i+1][j+1])
+        i -= 1
+    print("Problem 18: {0}".format(pyramid[0][0]))
