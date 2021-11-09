@@ -41,4 +41,4 @@ def main():
         if isAbundant(i):
             abundants.append(i)
     result = expressed(abundants,limit)
-    print("Problem 20: {0}".format(result))
+    print("Problem 23: {0}".format(result))

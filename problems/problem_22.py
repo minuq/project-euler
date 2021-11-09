@@ -18,4 +18,4 @@ def main():
     result = 0
     for i in range(0,len(names)):
         result += (i+1)*eval(names[i])
-    print("Problem 20: {0}".format(result))
+    print("Problem 22: {0}".format(result))

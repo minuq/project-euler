@@ -27,4 +27,4 @@ def main():
                 arr.append([min(pair1,pair2),max(pair1,pair2)])
                 res += pair1+pair2
         tmp += 1
-    print("Problem 20: {0}".format(res))
+    print("Problem 21: {0}".format(res))
